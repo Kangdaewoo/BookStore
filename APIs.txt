@@ -1,0 +1,74 @@
+##################################################
+ADMIN:
+
+/auth/admin/user
+1    GET: get users
+/auth/admin/user/{userId}:
+1    GET: get the user
+/auth/admin/user/{userId}/trans:
+1    GET: get transactions for the user
+/auth/admin/user/{userId}/books:
+1    GET: get books for the user
+
+/auth/admin/book:
+1    POST: buy books
+1    PUT: update book info
+
+##################################################
+
+/user/login:
+1    POST: log in
+/auth/logout:
+1    GET: log out
+
+/book:
+1    GET: get books
+/book/{bookId}:
+1    GET: get the book
+
+/auth/customer/book:
+1    PUT: buy, borrow, sell, or return books (no new books)
+        {
+            buy: [{_id: _, quantity: _}],
+            sell: [{_id: _, quantity: _}],
+            borrow: [{_id: _, quantity: _}],
+            return: [{_id: _, quantity: _}]
+        }
+/auth/customer/trans:
+1    GET: get transactions
+
+
+
+
+Book: {
+    ISBN: String,
+    title: String,
+    author: String,
+    quantity: Integer,
+    total: Integer,
+};
+unique: (title, author)
+
+User: {
+    name: String,
+    password: String,
+    email: {
+        String,
+        unique
+    },
+    borrowed: [
+        refs to Book
+    ],
+    transactions: [
+        refs to Transaction
+    ]
+};
+
+Transaction: {
+    user: ref to User,
+    action: String (borrow, return, buy, sell),
+    books: [
+        refs to Book
+    ],
+    Date: Date
+};

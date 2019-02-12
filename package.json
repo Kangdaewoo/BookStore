@@ -1,0 +1,27 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kangdaewoo/BookStore.git"
+  },
+  "author": "Daewoo Kang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kangdaewoo/BookStore/issues"
+  },
+  "homepage": "https://github.com/Kangdaewoo/BookStore#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.10",
+    "morgan": "^1.9.1",
+    "node": "^11.9.0"
+  }
+}
